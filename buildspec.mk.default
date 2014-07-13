@@ -85,12 +85,20 @@ endif
 # If you want to always set certain system properties, add them to this list.
 # E.g., "ADDITIONAL_BUILD_PROPERTIES += ro.prop1=5 prop2=value"
 # This mechanism does not currently support values containing spaces.
-#ADDITIONAL_BUILD_PROPERTIES +=
+ADDITIONAL_BUILD_PROPERTIES +=
+	ro.config.hw_quickpoweron=true \
+	persist.sys.shutdown.mode=hibernate \
+	ro.telephony.call_ring.delay=0 \
+	ring.delay=0 \
+	ro.max.fling_velocity=12000 \
+	ro.min.fling_velocity=8000 \
+	ro.HOME_APP_ADJ = 1 \
+	debug.sf.hw = 1
 
 # If you want to reduce the system.img size by several meg, and are willing to
 # lose access to CJK (and other) character sets, define NO_FALLBACK_FONT:=true
 ifndef NO_FALLBACK_FONT
-#NO_FALLBACK_FONT:=true
+NO_FALLBACK_FONT:=true
 endif
 
 # OVERRIDE_RUNTIMES allows you to locally override PRODUCT_RUNTIMES.
@@ -99,7 +107,7 @@ endif
 # To use Dalvik but also include ART, use "runtime_libdvm_default runtime_libart"
 # To use ART but also include Dalvik, use "runtime_libart_default runtime_libdvm"
 ifndef OVERRIDE_RUNTIMES
-#OVERRIDE_RUNTIMES:=runtime_libart_default
+OVERRIDE_RUNTIMES:=runtime_libart_default
 #OVERRIDE_RUNTIMES:=runtime_libdvm_default runtime_libart
 #OVERRIDE_RUNTIMES:=runtime_libart_default runtime_libdvm
 endif
